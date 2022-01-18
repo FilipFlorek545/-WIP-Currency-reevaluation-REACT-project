@@ -1,6 +1,6 @@
-const Result = ({children}) => {
+const Result = ({children, resultId}) => {
     return(
-        <div>{children}</div>
+        <div id = {resultId}>{children}</div>
     )
 }
 export default Result;

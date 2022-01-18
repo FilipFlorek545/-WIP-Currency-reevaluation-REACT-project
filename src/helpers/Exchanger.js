@@ -1,13 +1,13 @@
-import { render } from '@testing-library/react';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Select, Input, Button, Result } from '../components/forms';
-import { Oval } from 'react-loader-spinner';
+import { Watch } from 'react-loader-spinner';
 const Exchanger = () => {
     const [revalue, setRevalue] = useState('null')
     const [valueOfInput, setValueOfInput] = useState('');
     const [valueOfSelect, setValueOfSelect] = useState('');
     const [isLoading, setIsLoading] = useState('false')
+    const [resultContent, setResultContent] = useState(' ')
     const handleClick = () => {
         switch (valueOfSelect) {
             case 'option_1':
@@ -20,9 +20,7 @@ const Exchanger = () => {
                         let result = valueOfInput * revalue;
                         result = result.toFixed(2);
                         setIsLoading(true)
-                        render(
-                            <Result>Wynosi to {result} PLN!</Result>
-                        )
+                        setResultContent(`Wynosi to ${result} PLN!`);
                         clearInputs();
                 })
                 break;
@@ -35,9 +33,7 @@ const Exchanger = () => {
                     let result = valueOfInput * revalue;
                     result = result.toFixed(2);
                     setIsLoading(true)
-                    render(
-                        <Result>Wynosi to {result} PLN!</Result>
-                    )
+                    setResultContent(`Wynosi to ${result} PLN!`);
                     clearInputs();
                 })
                 break;
@@ -50,9 +46,7 @@ const Exchanger = () => {
                     let result = valueOfInput * revalue;
                     result = result.toFixed(2);
                     setIsLoading(true);
-                    render(
-                        <Result>Wynosi to {result} PLN!</Result>
-                    )
+                    setResultContent(`Wynosi to ${result} PLN!`);
                     clearInputs();
                 })
                 break;
@@ -69,19 +63,26 @@ const Exchanger = () => {
         setValueOfSelect(event.target.value);
     }
     const clearInputs = () => {
-        setValueOfInput(() => '');
+        setValueOfInput('');
         setValueOfSelect(() => '');
     }
     return(
         <>
         <Input 
-        labelText= 'Ilość'
-        onChange= { handleInputChange }
-        value = { valueOfInput }
+        inputId='numberId'
+        labelText='Ilość'
+        onChange={ handleInputChange }
+        value={ valueOfInput }
         />
         <Select selectValue={ valueOfSelect } onSelectChange={ handleSelectChange } /> 
         <Button onClick={handleClick}>Klik!</Button>
-        {!isLoading && <Oval />}
+        <div id='loaderid'>
+        {!isLoading && <Watch
+            height='30'
+            width='30'
+        />}
+        </div>
+        <Result resultId='result'>{resultContent}</Result>
         </>
     )
 }    
