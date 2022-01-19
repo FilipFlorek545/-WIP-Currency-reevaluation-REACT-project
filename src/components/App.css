@@ -1,7 +1,7 @@
 .App {
   margin: auto;
   margin-top: 20vh;
-  width: 20%;
+  width: 40%;
 }
 #result {
   margin: auto;
@@ -11,4 +11,10 @@
 #loaderid {
   margin-left: 135px;
   padding: 20px;
+}
+img {
+  height: 30%;
+  width: 30%;
+  float: left;
+  margin-top: -70px;
 }
