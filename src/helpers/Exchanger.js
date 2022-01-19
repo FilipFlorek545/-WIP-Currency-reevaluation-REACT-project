@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Select, Input, Button, Result } from '../components/forms';
+import { Select, Input, Button } from '../components/forms';
+import Result from '../components/Result';
 import { Watch } from 'react-loader-spinner';
 const Exchanger = () => {
     const [revalue, setRevalue] = useState('null')
