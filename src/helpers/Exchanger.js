@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Select, Input, Button } from '../components/forms';
 import Result from '../components/Result';
 import { Watch } from 'react-loader-spinner';
@@ -75,8 +75,10 @@ const Exchanger = () => {
         onChange={ handleInputChange }
         value={ valueOfInput }
         />
+        <div id='select_input'>
         <Select selectValue={ valueOfSelect } onSelectChange={ handleSelectChange } /> 
         <Button onClick={handleClick}>Klik!</Button>
+        </div>
         <div id='loaderid'>
         {!isLoading && <Watch
             height='30'

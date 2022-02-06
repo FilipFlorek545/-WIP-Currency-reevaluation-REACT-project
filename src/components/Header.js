@@ -1,4 +1,4 @@
-const Header = ({ children, className }) => {
-    return <h2 className="className">{ children }</h2>
+const Header = ({ children, classHeader }) => {
+    return <h2 className={classHeader}>{ children }</h2>
 }
 export default Header;
